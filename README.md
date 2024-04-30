@@ -1,6 +1,6 @@
 # django-apiServices-
 in this application a web-based blog project is built.
-Although I finished in 2022, it was transferred to githuba to immortalize it.
+Although I finished in 2022, it was transferred to github to immortalize it.
 What I want to mention is to establish communication units related to the database and to ensure that the data is served. (REST-API)
 You can test it at local
 
