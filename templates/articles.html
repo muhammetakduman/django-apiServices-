@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class = "row" >
+    <div class="col-md-10 offset-md-3">
+        <div class ="col-lg-8">
+        <h3>Makaleler</h3>
+        <hr>
+        </div>
+    </div>
+</div>
+<div class ="row">
+    <div class="col-md-10 offset-md-3">
+        <div class="col-lg-8">
+        <form>
+            {% csrf_token %}
+            <input class=" form-control-lg form-control-borderless" type="search" placeholder="Makale Ara" name = "keyword">
+            <button class="btn btn-md btn-danger" type="submit">ARA</button>
+        <hr>
+        </form>
+        </div>
+    </div>
+</div>
+{% if articles %}
+{% for article in articles %}
+<div class="row">
+    <div class="col-md-10 offset-md-3">
+ 
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      <!-- Title -->
+      <a href="{% url 'article:detail' article.id %}"><h3 class="mt-4">{{article.title}}</h3></a>
+
+      <!-- Author -->
+      <p class="lead">
+        
+        {{article.author.username}} tarafından oluşturuldu.
+      </p>
+
+      <hr>
+
+      <!-- Date/Time -->
+      <p>{{article.created_date}}</p>
+
+      <hr>
+
+      <!-- Preview Image -->
+
+      <hr>
+
+      <!-- Post Content -->
+      <p class="lead">
+            {{article.content|truncatewords:50}}
+      </p>
+      <a style ="float:right;"  href="/articles/article/{{article.id}}" class = "btn btn-danger">Devamını oku.</a>
+      <hr>
+    </div>
+</div>
+</div>
+
+
+{% endfor %}
+
+
+
+{% else %}
+<div class = "alert alert-danger" >
+    Makale Bulunamadı.
+</div>
+{% endif %}
+{% endblock body %}
