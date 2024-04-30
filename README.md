@@ -1,0 +1,2 @@
+# django-apiServices-
+Blog app.
