@@ -1,0 +1,49 @@
+{% extends "layout.html"%}
+{% block body %}
+<h3>Kontrol Paneli</h3>
+<hr>
+<p>
+    Hoşgeldiniz, <small>{{request.user.username}}</small>
+</p>
+{% if articles %}
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Tarih</th>
+        <th scope="col">Güncelle</th>
+        <th scope="col">Sil</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr>
+            <th scope="row">{{article.id}}</th>
+            <td><a href="{% url 'article:detail' article.id %}">{{article.title}}</a></td>
+            <td>{{article.author.username}}</td>
+            <td>{{article.created.date}}</td>
+            <td><a href="{% url 'article:update' article.id %}"class ="btn btn-danger">Güncelle</a></td>
+            <td><a href="{% url 'article:delete' article.id %}"class ="btn btn-danger">Sil</a></td>
+          </tr>
+          <tr>
+        {% endfor %}
+      <!---<tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr> -->
+</table>
+
+{% else %}
+<div 
+    class = "alert alert-danger">
+    Henüz Makaleniz Bulunmuyor.
+</div>
+{% endif %}
+<a class = "btn btn-danger" href="{% url 'article:addarticle' %}">Makale Ekle</a>
+<hr>
+{% endblock body %} 

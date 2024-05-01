@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class = "jumbotron text-center">
+    <h3> Yazılım Tartışma Bloğuna Hoşgeldiniz.</h3>
+    <hr>
+    <p>Bu blogda bütün düşüncelerinizi paylaşıp fikir alışverişinde bulunabilirsiniz. </p>
+</div>
+<ul>
+{% for number in numbers  %}
+    <li>{{number}}</li>
+{% endfor %}
+<p style="font-size: 18px; font-weight: bold; color: #ed0c00; text-transform: uppercase;">
+    {% if request.user.is_authenticated %}
+        Hoşgeldin, {{request.user.username}}
+    
+    {% else %}
+        Giriş Yapılmamış.
+    {% endif %}
+</p>
+{% endblock  %}
