@@ -6,7 +6,6 @@ from django.contrib import messages
 # Create your views here.
 #Alternatif 1
 def register(request):
-    #Alternatif burda direkt post veya get kontrolü yapmadan None tanımladık.cleancode
     form = RegisterForm(request.POST) or None
 
     if form.is_valid():

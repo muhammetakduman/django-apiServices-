@@ -1,0 +1,8 @@
+p {
+    background-color: red;
+}
+#about {
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 10px;
+}
